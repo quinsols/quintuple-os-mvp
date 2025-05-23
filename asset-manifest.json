@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/quintuple-os-mvp/static/css/main.dc4d6ff2.css",
-    "main.js": "/quintuple-os-mvp/static/js/main.a554c94b.js",
+    "main.js": "/quintuple-os-mvp/static/js/main.d663a566.js",
     "index.html": "/quintuple-os-mvp/index.html",
     "main.dc4d6ff2.css.map": "/quintuple-os-mvp/static/css/main.dc4d6ff2.css.map",
-    "main.a554c94b.js.map": "/quintuple-os-mvp/static/js/main.a554c94b.js.map"
+    "main.d663a566.js.map": "/quintuple-os-mvp/static/js/main.d663a566.js.map"
   },
   "entrypoints": [
     "static/css/main.dc4d6ff2.css",
-    "static/js/main.a554c94b.js"
+    "static/js/main.d663a566.js"
   ]
 }
