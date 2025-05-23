@@ -4,39 +4,91 @@ import React, { useState } from 'react';
 const PromptForm = () => {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setResponse('');
 
-    // Simulated logic — feel free to expand based on prompt content
-    if (prompt.toLowerCase().includes('okr')) {
-      setResponse('Simulated Agent Response: OKRs for AgriFly generated ✅');
-    } else if (prompt.toLowerCase().includes('task')) {
-      setResponse('Simulated Agent Response: Task assigned to Legal Pod 🧠');
-    } else {
-      setResponse('Simulated Agent Response: No matching SOP found. Try again.');
+    try {
+      const res = await fetch('/api/prompt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt }),
+      });
+
+      const data = await res.json();
+      setResponse(data.reply);
+    } catch (err) {
+      console.error('❌ Error calling OpenAI API:', err);
+      setResponse('Something went wrong. Please try again.');
     }
+
+    setLoading(false);
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-      <h3>Prompt Submission</h3>
+    <div style={{
+      maxWidth: '700px',
+      margin: '60px auto',
+      padding: '30px',
+      backgroundColor: '#ffffff',
+      borderRadius: '12px',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+    }}>
+      <h2 style={{
+        textAlign: 'center',
+        fontSize: '24px',
+        marginBottom: '20px',
+        color: '#1a202c'
+      }}>
+        🔍 AI Assistant
+      </h2>
+
       <form onSubmit={handleSubmit}>
         <textarea
           rows="4"
-          placeholder="Enter your prompt here..."
+          placeholder="Ask anything related to OKRs, SOPs, or tasks..."
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          style={{ width: '100%', padding: '10px', fontSize: '16px' }}
+          style={{
+            width: '100%',
+            padding: '14px',
+            fontSize: '16px',
+            borderRadius: '8px',
+            border: '1px solid #ccc',
+            marginBottom: '20px',
+            resize: 'none'
+          }}
         />
-        <br />
-        <button type="submit">Submit Prompt</button>
+
+        <button type="submit" style={{
+          width: '100%',
+          padding: '12px',
+          fontSize: '16px',
+          backgroundColor: '#1a202c',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer'
+        }}>
+          {loading ? 'Thinking...' : 'Generate Response'}
+        </button>
       </form>
 
       {response && (
-        <div style={{ marginTop: '20px', background: '#f0f0f0', padding: '10px' }}>
-          <strong>Agent Response:</strong>
-          <p>{response}</p>
+        <div style={{
+          marginTop: '30px',
+          padding: '20px',
+          backgroundColor: '#f0f7f9',
+          borderLeft: '5px solid #00796b',
+          borderRadius: '8px',
+          fontSize: '16px',
+          color: '#003c3c'
+        }}>
+          <strong>Response:</strong>
+          <p style={{ marginTop: '8px', whiteSpace: 'pre-line' }}>{response}</p>
         </div>
       )}
     </div>
