@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/quintuple-os-mvp/static/css/main.dc4d6ff2.css",
+    "main.js": "/quintuple-os-mvp/static/js/main.4b9542be.js",
+    "index.html": "/quintuple-os-mvp/index.html",
+    "main.dc4d6ff2.css.map": "/quintuple-os-mvp/static/css/main.dc4d6ff2.css.map",
+    "main.4b9542be.js.map": "/quintuple-os-mvp/static/js/main.4b9542be.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc4d6ff2.css",
+    "static/js/main.4b9542be.js"
+  ]
+}
