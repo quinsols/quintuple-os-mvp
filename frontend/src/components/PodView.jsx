@@ -1,6 +1,7 @@
 // src/components/PodView.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import BASE_URL from "../services/api";
 
 const PodView = () => {
   const { id } = useParams();
@@ -12,8 +13,8 @@ const PodView = () => {
     const fetchData = async () => {
       try {
         const [agentsRes, podsRes] = await Promise.all([
-          fetch('/api/agents'),
-          fetch('/api/pods')
+          fetch(`${BASE_URL}/api/agents`),
+          fetch(`${BASE_URL}/api/pods`)
         ]);
 
         const agentData = await agentsRes.json();

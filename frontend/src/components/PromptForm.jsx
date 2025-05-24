@@ -1,5 +1,6 @@
 // src/components/PromptForm.jsx
 import React, { useState } from 'react';
+import BASE_URL from "../services/api";
 
 const PromptForm = () => {
   const [prompt, setPrompt] = useState('');
@@ -12,7 +13,7 @@ const PromptForm = () => {
     setResponse('');
 
     try {
-      const res = await fetch('/api/prompt', {
+      const res = await fetch(`${BASE_URL}/api/prompt`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),

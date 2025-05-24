@@ -1,5 +1,6 @@
 // src/components/TaskLog.jsx
 import React, { useState, useEffect } from 'react';
+import BASE_URL from "../services/api";
 
 const getStatusStyle = (status) => {
   switch (status) {
@@ -23,8 +24,8 @@ const TaskLog = () => {
     const fetchData = async () => {
       try {
         const [taskRes, agentRes] = await Promise.all([
-          fetch('/api/task-log'),
-          fetch('/api/agents')
+          fetch(`${BASE_URL}/api/task-log`),
+          fetch(`${BASE_URL}/api/agents`)
         ]);
 
         const taskData = await taskRes.json();

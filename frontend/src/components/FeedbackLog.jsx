@@ -1,5 +1,6 @@
 // src/components/FeedbackLog.jsx
 import React, { useState, useEffect } from 'react';
+import BASE_URL from "../services/api";
 
 const FeedbackLog = () => {
   const [feedbackData, setFeedbackData] = useState([]);
@@ -11,9 +12,9 @@ const FeedbackLog = () => {
     const fetchAll = async () => {
       try {
         const [feedbackRes, agentsRes, taskRes] = await Promise.all([
-          fetch('/api/feedback-log'),
-          fetch('/api/agents'),
-          fetch('/api/task-log')
+          fetch(`${BASE_URL}/api/feedback-log`),
+          fetch(`${BASE_URL}/api/agents`),
+          fetch(`${BASE_URL}/api/task-log`)
         ]);
 
         const feedback = await feedbackRes.json();

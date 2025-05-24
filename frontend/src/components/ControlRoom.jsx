@@ -1,6 +1,7 @@
 // src/components/ControlRoom.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import BASE_URL from "../services/api";
 
 // Emoji map (feel free to customize or add more!)
 const podIcons = {
@@ -29,8 +30,8 @@ const ControlRoom = () => {
     const fetchAll = async () => {
       try {
         const [podRes, agentRes] = await Promise.all([
-          fetch('/api/pods'),
-          fetch('/api/agents')
+          fetch(`${BASE_URL}/api/pods`),
+          fetch(`${BASE_URL}/api/agents`)
         ]);
 
         const podData = await podRes.json();

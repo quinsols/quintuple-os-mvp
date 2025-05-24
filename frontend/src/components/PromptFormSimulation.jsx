@@ -1,5 +1,7 @@
 // src/components/PromptFormSimulation.jsx
 import React, { useState } from 'react';
+import BASE_URL from '../services/api';
+
 
 const PromptFormSimulation = () => {
   const [prompt, setPrompt] = useState('');
@@ -28,7 +30,7 @@ const PromptFormSimulation = () => {
     await delay(2000);
 
     try {
-      const res = await fetch('/api/prompt', {
+      const res = await fetch(`${BASE_URL}/api/prompt`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),
