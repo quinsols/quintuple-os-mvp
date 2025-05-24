@@ -1,1 +1,2 @@
 const BASE_URL = "https://quintuple-os-backend.onrender.com/api";
+export default BASE_URL;
