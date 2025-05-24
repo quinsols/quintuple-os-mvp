@@ -17,7 +17,7 @@ const Header = () => (
     <nav>
       <Link to="/" style={{ color: '#fff', margin: '0 10px' }}>Home</Link>
       <Link to="/dashboard" style={{ color: '#fff', margin: '0 10px' }}>Dashboard</Link>
-      <Link to="/prompt" style={{ color: '#fff', margin: '0 10px' }}>Prompt</Link>
+      <Link to="/synthesizer" style={{ color: '#fff', margin: '0 10px' }}>Synthesizer</Link>
       <Link to="/tasks" style={{ color: '#fff', margin: '0 10px' }}>Tasks</Link>
       <Link to="/feedback" style={{ color: '#fff', margin: '0 10px' }}>Feedback</Link>
     </nav>

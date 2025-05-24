@@ -19,7 +19,20 @@ const PromptForm = () => {
       });
 
       const data = await res.json();
-      setResponse(data.reply);
+
+      console.log("✅ Full Phase 1 Response:", data);
+
+      if (data.mapped_tasks) {
+        // Response is a structured object from Master POD logic
+        setResponse(JSON.stringify(data, null, 2));
+      } else if (typeof data.reply === 'string') {
+        // Response is a raw OpenAI reply
+        setResponse(data.reply);
+      } else {
+        // Fallback
+        setResponse('No structured response returned.');
+      }
+
     } catch (err) {
       console.error('❌ Error calling OpenAI API:', err);
       setResponse('Something went wrong. Please try again.');
@@ -78,18 +91,18 @@ const PromptForm = () => {
       </form>
 
       {response && (
-        <div style={{
+        <pre style={{
           marginTop: '30px',
           padding: '20px',
           backgroundColor: '#f0f7f9',
           borderLeft: '5px solid #00796b',
           borderRadius: '8px',
-          fontSize: '16px',
-          color: '#003c3c'
+          fontSize: '14px',
+          color: '#003c3c',
+          whiteSpace: 'pre-wrap'
         }}>
-          <strong>Response:</strong>
-          <p style={{ marginTop: '8px', whiteSpace: 'pre-line' }}>{response}</p>
-        </div>
+          {response}
+        </pre>
       )}
     </div>
   );

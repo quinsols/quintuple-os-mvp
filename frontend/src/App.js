@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginSelector from './components/LoginSelector';
 import ControlRoom from './components/ControlRoom.jsx';
-import PromptForm from './components/PromptForm';
+import PromptFormSimulation from './components/PromptFormSimulation';
 import PodView from './components/PodView';
 import AgentDetail from './components/AgentDetail';
 import TaskLog from './components/TaskLog';
@@ -40,7 +40,7 @@ function App() {
             />
 
             <Route path="/dashboard" element={<ControlRoom />} />
-            <Route path="/prompt" element={<PromptForm />} />
+            <Route path="/synthesizer" element={<PromptFormSimulation />} />
             <Route path="/pod/:id" element={<PodView />} />
             <Route path="/agent/:id" element={<AgentDetail />} />
             <Route path="/tasks" element={<TaskLog />} />
