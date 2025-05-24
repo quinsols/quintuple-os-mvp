@@ -1,1 +1,1 @@
-const BASE_URL = "https://quintuple-os-backend.onrender.com";
+const BASE_URL = "https://quintuple-os-backend.onrender.com/api";
